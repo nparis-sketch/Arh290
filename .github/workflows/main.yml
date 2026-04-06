@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Website</title>
+  <style>
+    :root {
+      --bg: #f8f6f2;
+      --text: #1f1f1f;
+      --muted: #6b6b6b;
+      --card: #ffffff;
+      --accent: #7a5c43;
+      --accent-light: #e8ddd3;
+      --border: #e5ddd5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(248, 246, 242, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.98rem;
+    }
+
+    .hero {
+      padding: 90px 0 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin-bottom: 28px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      transition: 0.25s ease;
+      font-size: 0.96rem;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+    }
+
+    section {
+      padding: 36px 0 72px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      max-width: 42rem;
+      margin-bottom: 28px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+    }
+
+    .project-card .image-placeholder {
+      height: 180px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--accent-light), #f2ebe5);
+      margin-bottom: 18px;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      margin-bottom: 14px;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 6px 10px;
+      background: var(--accent-light);
+      border-radius: 999px;
+      color: var(--accent);
+    }
+
+    .contact-box {
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 24px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.04);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 36rem;
+      margin: 12px auto 24px;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .card,
+      .hero-card,
+      .contact-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">Your Name</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#writing">Writing</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Student • Researcher • Creative</div>
+        <h1>Hello, I’m Your Name.</h1>
+        <p>
+          I’m a student and creative focused on archives, art, writing, and visual culture.
+          This site is a space to share my projects, interests, and the work I’m building.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#projects">View My Work</a>
+          <a class="btn secondary" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Portrait placeholder" />
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-text">
+        Use this section to introduce yourself with a few sentences about your background,
+        current work, academic interests, or creative practice.
+      </p>
+
+      <div class="about">
+        <div class="card">
+          <h3>Background</h3>
+          <p>
+            I’m interested in the ways objects, images, and archives shape how we understand
+            history and culture. My work often moves between research, writing, and visual storytelling.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Focus Areas</h3>
+          <ul>
+            <li>Archival research and collections</li>
+            <li>Art history and material culture</li>
+            <li>Digital projects and visual storytelling</li>
+            <li>Writing, design, and public-facing work</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="projects">
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-text">
+        Highlight a few projects, internships, exhibitions, publications, or research interests here.
+      </p>
+
+      <div class="project-grid">
+        <article class="card project-card">
+          <div class="image-placeholder"></div>
+          <h3>Project One</h3>
+          <p>A short description of a project, internship, or body of work you want visitors to explore.</p>
+          <div class="tag-row">
+            <span class="tag">Archives</span>
+            <span class="tag">Research</span>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="image-placeholder"></div>
+          <h3>Project Two</h3>
+          <p>Describe the goals, context, or outcome of this work in two or three concise sentences.</p>
+          <div class="tag-row">
+            <span class="tag">Design</span>
+            <span class="tag">Writing</span>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="image-placeholder"></div>
+          <h3>Project Three</h3>
+          <p>Use this card to show another area of your practice, such as photography, coursework, or exhibitions.</p>
+          <div class="tag-row">
+            <span class="tag">Photography</span>
+            <span class="tag">Culture</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="writing">
+      <h2 class="section-title">Writing & Updates</h2>
+      <p class="section-text">
+        Add links to essays, articles, talks, presentations, or recent news here.
+      </p>
+
+      <div class="about">
+        <div class="card">
+          <h3>Recent Essay</h3>
+          <p>Title of your essay or article. Add a sentence about what it explores and where it appeared.</p>
+        </div>
+
+        <div class="card">
+          <h3>Latest Update</h3>
+          <p>Share a current role, exhibition, internship, or milestone to keep the homepage feeling active and personal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="contact-box">
+        <h2 class="section-title">Let’s Connect</h2>
+        <p>
+          You can use this space for your email, LinkedIn, Instagram, portfolio links,
+          or a short invitation for collaboration.
+        </p>
+        <div class="buttons" style="justify-content:center;">
+          <a class="btn primary" href="mailto:youremail@example.com">Email Me</a>
+          <a class="btn secondary" href="#">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
